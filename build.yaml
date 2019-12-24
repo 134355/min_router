@@ -1,0 +1,22 @@
+targets:
+  $default:
+    builders:
+      min_router|minAppRouter_builder:
+        enabled: true
+      min_router|minRouter_builder:
+        enabled: true
+builders:
+  minAppRouter_builder:
+    import: 'package:min_router/src/builder.dart'
+    builder_factories: ['minAppRouterBuilder']
+    build_extensions: { '.dart': ['.g.dart'] }
+    auto_apply: root_package
+    build_to: source
+  minRouter_builder:
+    import: 'package:min_router/src/builder.dart'
+    builder_factories: ['minRouterBuilder']
+    build_extensions: { '.dart': ['.g.dart'] }
+    runs_before: ["min_router|minAppRouter_builder"]
+    auto_apply: root_package
+    build_to: source
+  
